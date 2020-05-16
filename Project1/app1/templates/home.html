@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>짱구의 짝궁을 찾아라</title>
+    <link rel ="stylesheet" href ="static/KMJ.css">
+</head>
+<body>
+    
+    <div class="container forflex">
+      <div class="container-item">
+        <div class="title">
+            짱구의 짝궁을 찾아라.
+        </div>
+       
+            <nav>
+                 <ul class="nav-container"> 
+
+                     <li><a href="#">혈액형</a></li>
+                     <li><a href="#">A형</a></li> 
+                     <li><a href="#">B형</a></li> 
+                     <li><a href="#">AB형</a></li> 
+                     <li><a href="#">O형</a></li> 
+                    </ul> 
+                    <style>
+                        
+                        li{
+                            float:left;
+                            position:center;
+                            margin:30px 30px;
+                            padding:0;
+                            text-align:center;
+                            align-items:center;
+                            display:table-cell;
+                            vertical-align:middle;
+                           
+                        }
+                        ul {
+                            display:inline-block;
+                            
+                            position:relative;
+                            margin :5px 30px;
+                            padding:0; 
+                            text-align:center;
+                            align-items:center;
+                            background-color: #FFDAB9; width: 150px; list-style-type: none; margin: 0; padding: 0; }
+                        li a { display: block; color: #000000; padding: 8px; text-decoration: none; font-weight: bold; }
+                        li a:hover{background-color:red;color:white;}
+                        
+                    </style>
+                </nav>
+        <div class = "smallbox">
+            <div class="third">
+             <div class = slice>
+                 <img src ="static/훈이2.jpg" width="400" height="300"onclick="dem()"><br/>
+                  A형<br/>
+                  난 훈이임당! <br/>
+
+             </div>
+             <div class = slice>
+             <img src ="static/철수.jfif" width = "400" height="300"onclick="dem()"><br/>
+                O형 <br/>
+                난 철수임당!<br/>
+            </div>
+            </div>
+            <div class="third">
+             <div class= slice>
+                 <img src ="static/유리.jpg"width = "400" height="300"onclick="dem()"><br/>
+                    B형<br/>
+                    난 유리임당!<br/>
+                </div>
+             <div class= slice>
+                 <img src = "static/맹구.jpeg"width = "400" height="300"onclick="dem()"><br/>
+                    AB형<br/>
+                    난 맹구이지!<br/>
+                </div>
+            
+          </div>
+    
+        </div>
+    <div class ="containter select">
+            
+            <button type="button" id="but">다음단계</button>
+    </div>
+    </div>
+    </div>
+
+    <body onload="showClock()">
+        <div class = "container-item big">
+            <div class ="demon">
+                <div class ="clock timer">
+                     <div id="demo"></div>
+                 </div>
+                 <div class ="clock name">
+                     초코비 게임             
+                 </div>
+                 <div id="divClock" class="clock time">
+                       
+                 </div>
+            </div>
+    
+        </div>
+        <div class = "big">
+            
+            <div class ="game play">
+                짱구와 함께 하는 가위바위보 게임
+                <center>
+                    <form name=game>
+                        <table border=3 cellpadding=5 >
+                          <tr> 
+                            <td align=center><b>선택하세요</b>:</td>
+                            <td align=center><a href="javascript:void(0);" onClick="playGame(1);"><img src="static/바위.jpg" border="0"></a></td>
+                            <td align=center><a href="javascript:void(0);" onClick="playGame(2);"><img src="static/보.jpg" border="0"></a></td>
+                            <td align=center><a href="javascript:void(0);" onClick="playGame(3);"><img src="static/가위.jpg" border="0"></a></td>
+                          </tr>
+                          <tr> 
+                            <td colspan=4 align=center> 
+                              <input type=text name=msg size="60">
+                            </td>
+                          </tr>
+                          <tr> 
+                            <td colspan=4 align=center> <b> 
+                              <input type=text name=win readonly value="0" size="2">
+                              초코비개수. 
+                              <input type=text name=loss readonly value="0" size="2">
+                              번 짐. 
+                              <input type=text name=draw readonly value="0" size="2">
+                              번 무승부. </b></td>
+                          </tr>
+                        </table>
+                    </form>
+                    </center>
+                    
+                        
+                    <CENTER> 
+                    <TABLE width="640" border="0" cellspacing="2" cellpadding="2">
+                    <TR> 
+                    <TD align="center" valign="middle" height="24" background-color="orange">
+                    <FONT size="4" color="white">
+                    ** 게임 설명 **
+                    </FONT>
+                    </TD></TR>
+                    <TR><TD background-color="cornsilk">
+                    1. 가위 바위 보 게임입니다.
+                    <BR>
+                    2. 그림을 선택하면 게임이 진행되고 결과가 나옵니다.
+                    <BR>
+                    3. 계속 그림을 선택하면 게임이 계속 됩니다.
+                     
+                    </TD></TR>
+                    </TABLE>
+                    </CENTER> 
+                    <div id ="modal">
+                        <div class ="modal_content score">
+                        <h5>
+                                    짱구의 최고의 짝궁은!!!!!<br/>
+                                      1등______________ 이지롱! <br/>
+                                    
+                                        </h5>
+                            <div class ="modal_layer"></div>
+                            </div>
+                    </div>   
+    </div>
+
+            </div>
+        </div>
+        <script>
+           
+            const start =document.querySelector('#but');
+            start.addEventListener('click',timer);
+            start.addEventListener('click',upup);
+            var time =60;
+            var min ="";
+            var sec ="";
+            
+                function upup(){setInterval(timer,1000);}
+                
+                
+                
+                function timer(){
+                    
+                min = parseInt(time/60);
+                sec = time%60;
+                console.log(time);
+                document.getElementById("demo").innerHTML =  min+"분"+sec+"초";
+                time--;
+               
+                if(time<0){
+                    
+                    document.getElementById("demo").innerHTML = "게임종료";
+                    document.getElementById("modal").style.display="block"
+                    
+
+
+                }
+              };
+            
+            
+        </script>
+        
+        <script type="text/javascript">
+            function showClock()
+            {
+                var currentDate=new Date();
+                var divClock=document.getElementById("divClock");
+                var apm=currentDate.getHours();
+                if(apm<12)
+                {
+                    apm="오전";
+                }
+                else
+                {
+                    apm="오후";
+                }
+                
+                var msg = "현재시간 : "+apm +(currentDate.getHours()-12)+"시";
+                msg += currentDate.getMinutes() + "분";
+                msg += currentDate.getSeconds() + "초";
+                
+                divClock.innerText=msg;
+                
+                setTimeout(showClock,1000);
+            }
+           
+        </script>
+   
+<script>
+   
+   let all =document.querySelectorAll("button");
+    for(let i =0; i<all.length;i+=1){
+        if(i%2 ===0){
+    all[i].addEventListener('click',function(){
+        window.scrollBy({left:0,top:1080,behavior:'smooth'});
+    })
+        }else{
+            all[i].addEventListener('click',function(){
+                window.scrollBy({left:0,top:1080,behavior:'smooth'});
+            })
+        };
+    };
+ 
+
+
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+    function playGame(choice) {
+    with (document.game) {
+    comp = Math.round((Math.random() * 2) + 1); 
+    var choicename;
+    if (comp == 1) choicename = "바위";
+    if (comp == 2) choicename = "보";
+    if (comp == 3) choicename = "가위";
+    msg.value = '짱구의 적수는 '  + choicename + '. ';
+    switch(choice) { // calculates score
+    case 1 : // rock
+             if (comp == 1) {  draw.value++; msg.value += '이번엔 무승부.'; break; }
+             if (comp == 2) {  loss.value++;  msg.value += '이런,당신이 졌어요.';     break; }
+             if (comp == 3) {  win.value++; msg.value += '축하해요. 당신이 이겼어요!';      break; }
+    case 2 : // paper
+             if (comp == 1) {  win.value++;  msg.value += '당신이 이겼어요!';      break; }
+             if (comp == 2) {  draw.value++; msg.value += '무승부죠?'; break; }
+             if (comp == 3) {  loss.value++; msg.value += '하하! 당신이 졌죠?';     break; }
+    case 3 : // scissors
+             if (comp == 1) {  loss.value++;  msg.value += '흠. 당신이 졌어요.';     break; }
+             if (comp == 2) {  win.value++; msg.value += '대단해요. 당신이 이겼어요.';      break; }
+             if (comp == 3) {  draw.value++; msg.value += '이런 무승부군요.'; break; }
+          }
+          msg.value += '   ^_^';
+       }
+    
+
+    }
+    </SCRIPT>
+    
+
+     
+</body>
+</html>
