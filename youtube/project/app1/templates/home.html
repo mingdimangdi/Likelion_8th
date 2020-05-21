@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/home.css">
+    
+    <title>내가 좋아하는 유튜브 채널</title>
+</head>
+<body>
+    <div class="container">
+    <h1>내가 좋아하는 유튜브 채널 소개하기</h1>
+    </div>
+    {% for person in persons.all %}
+    <div class="container">
+    <div class="video"> 
+        <div class="content">
+        <div class ="box1">   
+                 <h1>{{person.name}}</h1>
+        </div>
+    
+        <div class ="box2">
+             <p>{{person.creatname}}</p>
+        </div>
+        <div class ="box3">
+            
+         <p>{{person.subnum}}</p>
+      </div>
+     <div class ="box4">
+        {% if person.like == 1 %}
+            ★☆☆☆☆
+        {% elif person.like == 2 %}
+            ★★☆☆☆
+        {% elif person.like == 3 %}
+            ★★★☆☆
+        {% elif person.like == 4 %}
+            ★★★★☆
+        {% else %}
+            ★★★★★
+        {% endif %}
+     </div>    
+     <div class ="box5">
+        {% if person.live == true %}
+            <img src ="C:\Users\LG\Desktop\멋사\youtube\project\app1\static\true.jpg">
+        {% else %}
+            <img src = "app1/static/false.jpg">
+        {% endif %}
+     </div>  
+    </div>  
+    </div>
+    <div class ="video">
+        <iframe src="{{person.link1}}"></iframe>
+        <iframe src="{{person.link2}}"></iframe>
+        <iframe src="{{person.link3}}"></iframe>
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>
+

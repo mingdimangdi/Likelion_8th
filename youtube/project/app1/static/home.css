@@ -1,0 +1,19 @@
+ body{
+     margin:0;
+     background-color:pink;
+ }
+ .container {
+     display:flex;
+     flex-direction:column;
+    text-align:center;
+ }
+ 
+ .content{
+    flex :1 ;
+    flex-direction:row;
+    text-align:center;
+}
+.video{
+    flex-direction:row;
+   
+}
