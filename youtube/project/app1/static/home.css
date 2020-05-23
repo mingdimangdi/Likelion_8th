@@ -17,3 +17,10 @@
     flex-direction:row;
    
 }
+.box5{
+    text-align : center;
+    height:50%;
+    padding : 1px 100px;
+    left : 50%;
+    align-content: center;
+}
